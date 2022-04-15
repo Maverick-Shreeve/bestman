@@ -6,12 +6,14 @@ import re
 
 MAX_INPUT_LENGTH = 32
 
+#to set my API key as an envrionment variable i had to type setx OPENAI_API_KEY "mysecretkey" into terminal
 
 def main():
     parser = argparse.ArgumentParser()   #argparse lets me test the API by typing - python bestman.py -i "any input"
     parser.add_argument("--input", "-i", type=str, required=True)  #also make sure to change directory to app for testing// cd app
     args = parser.parse_args()
     user_input = args.input
+
 
     print(f"User input: {user_input}") #trying out f strings this line prints out what i type in
     if validate_length(user_input):
@@ -28,13 +30,12 @@ def validate_length(prompt: str) -> bool:
 
 def generate_keywords(prompt: str) -> List[str]:
     # Load API key from an environment variable 
-    openai.api_key = ("OPENAI_API_KEY")
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)
 
     response = openai.Completion.create(
-        engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32 # the davinci text is from the openAI website
-    )
+        engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32) # the davinci text is from the openAI website
 
     # Extract output text.
     keywords_text: str = response["choices"][0]["text"]  # without this the API prints out a lot of extra things we dont need
@@ -51,13 +52,13 @@ def generate_keywords(prompt: str) -> List[str]:
 
 def generate_branding_snippet(prompt: str) -> str:   # reuse a lot of the code from above from the keywords function^^
     # Load your API key from an environment variable or secret management service
-    openai.api_key = ("OPENAI_API_KEY")
+    openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_prompt)
 
     response = openai.Completion.create(
-        engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32 
-    )
+        engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
+
 
     # Extract output text.
     branding_text: str = response["choices"][0]["text"]
