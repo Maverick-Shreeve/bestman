@@ -15,7 +15,7 @@ def main():
     user_input = args.input
 
 
-    print(f"User input: {user_input}") #trying out f strings this line prints out what i type in
+    print(f"User input: {user_input}") #trying out f strings, this line prints out what i type in
     if validate_length(user_input):
         generate_branding_snippet(user_input)
         generate_keywords(user_input)
