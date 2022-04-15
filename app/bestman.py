@@ -8,12 +8,12 @@ MAX_INPUT_LENGTH = 32
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--input", "-i", type=str, required=True)
+    parser = argparse.ArgumentParser()   #argparse lets me test the API by typing - python bestman.py -i "any input"
+    parser.add_argument("--input", "-i", type=str, required=True)  #also make sure to change directory to app for testing// cd app
     args = parser.parse_args()
     user_input = args.input
 
-    print(f"User input: {user_input}")
+    print(f"User input: {user_input}") #trying out f strings this line prints out what i type in
     if validate_length(user_input):
         generate_branding_snippet(user_input)
         generate_keywords(user_input)
@@ -27,7 +27,7 @@ def validate_length(prompt: str) -> bool:
 
 
 def generate_keywords(prompt: str) -> List[str]:
-    # Load your API key from an environment variable or secret management service
+    # Load API key from an environment variable 
     openai.api_key = ("OPENAI_API_KEY")
     enriched_prompt = f"Generate related branding keywords for {prompt}: "
     print(enriched_prompt)
@@ -37,7 +37,7 @@ def generate_keywords(prompt: str) -> List[str]:
     )
 
     # Extract output text.
-    keywords_text: str = response["choices"][0]["text"]  # had to do index 0 because thats what the ooutput is alwayas at
+    keywords_text: str = response["choices"][0]["text"]  # without this the API prints out a lot of extra things we dont need
 
     # Strip whitespace.
     keywords_text = keywords_text.strip()
