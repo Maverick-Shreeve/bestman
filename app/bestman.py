@@ -14,6 +14,7 @@ def main():
     args = parser.parse_args()
     user_input = args.input
 
+
     print(f"User input: {user_input}") #trying out f strings, this line prints out what i type in
     if validate_length(user_input):
         generate_branding_snippet(user_input)
@@ -57,6 +58,7 @@ def generate_branding_snippet(prompt: str) -> str:   # reuse a lot of the code f
 
     response = openai.Completion.create(
         engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
+
 
     # Extract output text.
     branding_text: str = response["choices"][0]["text"]
