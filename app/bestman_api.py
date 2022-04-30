@@ -1,10 +1,11 @@
 # making this an API using fastAPI. After this next step will be to get this to the cloud so we can use it from anywhere
 from fastapi import FastAPI, HTTPException
 from bestman import generate_branding_snippet, generate_keywords
-from fastapi.middleware.cors import CORSMiddleware
+from mangum import Mangum
+#from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()  #uvicorn bestman_api:app --reload / this runs the server
-
+handler = Mangum(app)
 MAX_INPUT_LENGTH = 32
 
 

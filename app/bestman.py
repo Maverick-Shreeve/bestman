@@ -37,10 +37,10 @@ def generate_keywords(prompt: str) -> List[str]:
     response = openai.Completion.create(
         engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32) # the davinci text is from the openAI website
 
-    # Extract output text.
+    # Extract output text
     keywords_text: str = response["choices"][0]["text"]  # without this the API prints out a lot of extra things we dont need
 
-    # Strip whitespace.
+    # Strip whitespace
     keywords_text = keywords_text.strip()
     keywords_array = re.split(",|\n|;|-", keywords_text)  # imported from re splits strings, have to add all the characters (,|\n|;|-)because the way the keywords are printed out
     keywords_array = [k.lower().strip() for k in keywords_array]
@@ -51,7 +51,7 @@ def generate_keywords(prompt: str) -> List[str]:
 
 
 def generate_branding_snippet(prompt: str) -> str:   # reuse a lot of the code from above from the keywords function^^
-    # Load your API key from an environment variable or secret management service
+    # Load your API key from an environment variable 
     openai.api_key = os.getenv("OPENAI_API_KEY")
     enriched_prompt = f"Generate upbeat branding snippet for {prompt}: "
     print(enriched_prompt)
@@ -60,16 +60,16 @@ def generate_branding_snippet(prompt: str) -> str:   # reuse a lot of the code f
         engine="text-davinci-002", prompt=enriched_prompt, max_tokens=32)
 
 
-    # Extract output text.
+    # Extract output text
     branding_text: str = response["choices"][0]["text"]
 
-    # Strip whitespace.
+    # Strip whitespace
     branding_text = branding_text.strip()
 
     # Add ... to the end of the statement.
     last_char = branding_text[-1]
     if last_char not in {".", "!", "?"}:
-        branding_text += "..."   # the API can go past the linit so if it does it will end with ...
+        branding_text += "..."   # the API can go past the limit so if it does it will end with ...
 
     print(f"Snippet: {branding_text}")
     return branding_text
