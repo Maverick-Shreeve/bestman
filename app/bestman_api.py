@@ -2,12 +2,19 @@
 from fastapi import FastAPI, HTTPException
 from bestman import generate_branding_snippet, generate_keywords
 from mangum import Mangum
-#from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()  #uvicorn bestman_api:app --reload / this runs the server
+app = FastAPI()  #uvicorn bestman_api:app --reload / this runs the server for fast api
 handler = Mangum(app)
 MAX_INPUT_LENGTH = 32
 
+app.add_middleware(  # helps our website stay in contact with our api
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
