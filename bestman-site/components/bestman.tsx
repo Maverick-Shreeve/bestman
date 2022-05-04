@@ -4,7 +4,7 @@ import Results from "./results";
 import Image from "next/image";
 
 
-const CopyKitt: React.FC = () => {
+const BestMan: React.FC = () => {
   const CHARACTER_LIMIT: number = 32;
   const ENDPOINT: string =
     "https://2iuf8acbwl.execute-api.us-east-1.amazonaws.com/prod/generate_snippet_and_keywords";
@@ -66,7 +66,7 @@ const CopyKitt: React.FC = () => {
       <div className="max-w-md m-auto p-2">
         <div className="bg-slate-800 p-6 rounded-md text-white">
           <div className="text-center my-6">
-            <Image src={logo} width={42} height={42} />
+            {/* <Image src={logo} width={42} height={42} /> */}
             <h1 className={gradientTextStyle + " text-3xl font-light"}>
               BestMan
             </h1>
