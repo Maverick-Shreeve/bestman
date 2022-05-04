@@ -1,6 +1,10 @@
 import { Stack, StackProps } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as apiGateway from "aws-cdk-lib/aws-apigateway";
+import * as dotenv from "dotenv" ;
+
+dotenv.config()
 
 export class BestmanInfraStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
@@ -16,7 +20,18 @@ export class BestmanInfraStack extends Stack {
       code: lambda.Code.fromAsset("../app/"),
       handler: "bestman_api.handler",
       layers: [layer],
-
+      environment: {
+        OPENAI_API_KEY: process.env.OPENAI_API_KEY ?? "",
+      },
      });
+
+    const bestmanApi = new apiGateway.RestApi(this, "RestApi", {
+      restApiName: "Bestman API",
+    });
+    bestmanApi.root.addProxy({
+      defaultIntegration: new apiGateway.LambdaIntegration(apiLambda),
+    });
   }
 }
+  
+
