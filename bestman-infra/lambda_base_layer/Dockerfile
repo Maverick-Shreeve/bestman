@@ -13,7 +13,7 @@ RUN python3.7 -m venv base
 RUN source base/bin/activate
 
 # Install dependencies
-COPY ./requirements_for_proj.txt .
+COPY ./requirements.txt .
 RUN pip install -r requirements.txt -t ./python
 
 # Zip it up for deployment.
