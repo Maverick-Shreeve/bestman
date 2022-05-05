@@ -49,7 +49,7 @@ interface FormProps {  //Props are arguments passed into react components
           className="bg-gradient-to-r from-teal-400 
           to-blue-500 disabled:opacity-50 w-full p-2 rounded-md text-lg"
           onClick={props.onSubmit}
-          disabled={props.isLoading || !isPromptValid} // this disables the submit button if i submit or if prompt isnt valid
+          disabled={props.isLoading || !isPromptValid} // this disables the submit button if i hit  submit or if prompt isnt valid
         >
           Submit
         </button>
