@@ -25,7 +25,8 @@ interface FormProps {  //Props are arguments passed into react components
       <>
         <div className="mb-6 text-slate-400">
           <p>
-            Type in a keyword for your brand and I will generate some magic for you!
+            Type in a keyword for your brand and I will generate some magic for you! --
+              (AWS has been acting up so if it doesn't work in 4 seconds refresh and try another word! )
           </p>
         </div>
   
@@ -33,7 +34,7 @@ interface FormProps {  //Props are arguments passed into react components
           className="p-2 w-full rounded-md focus:outline-teal-400 focus:outline text-slate-700"
           type="text"  
 
-          placeholder="coffee"
+          placeholder="ex: coffee, tesla, tea, pokemon, NBA, tools"
 
           value={props.prompt}
           onChange={(e) => updatePromptValue(e.currentTarget.value)}
