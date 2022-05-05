@@ -8,7 +8,7 @@ app = FastAPI()  #uvicorn bestman_api:app --reload / this runs the server for fa
 handler = Mangum(app)
 MAX_INPUT_LENGTH = 32
 
-app.add_middleware(  # helps our website stay in contact with our api
+app.add_middleware(  # helps our website stay in contact with our api .
     CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
