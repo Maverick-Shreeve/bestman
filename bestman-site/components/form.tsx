@@ -32,7 +32,9 @@ interface FormProps {  //Props are arguments passed into react components
         <input // this is for our text box
           className="p-2 w-full rounded-md focus:outline-teal-400 focus:outline text-slate-700"
           type="text"  
+
           placeholder="coffee"
+
           value={props.prompt}
           onChange={(e) => updatePromptValue(e.currentTarget.value)}
         ></input>

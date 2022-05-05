@@ -1,8 +1,11 @@
 import React from "react";
 import Form from "./form";
 import Results from "./results";
+
 //import Image from "next/image";
 //import logo from "../public/bestmanLogo.png"
+
+
 
 
 const BestMan: React.FC = () => {
@@ -67,7 +70,10 @@ const BestMan: React.FC = () => {
       <div className="max-w-md m-auto p-2">
         <div className="bg-slate-800 p-6 rounded-md text-white">
           <div className="text-center my-6">
+
             {/* { <Image src={logo} width={145} height={80} /> } */}
+
+
             <h1 className={gradientTextStyle + " text-3xl font-light"}>
               BestMan
             </h1>
