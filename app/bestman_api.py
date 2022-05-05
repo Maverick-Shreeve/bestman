@@ -32,7 +32,7 @@ async def generate_keywords_api(prompt: str):
     return {"snippet": None, "keywords": keywords}
 
 
-@app.get("/generate_snippet_and_keywords") # combined the kewords and snippet function
+@app.get("/generate_snippet_and_keywords") # combined the kewords and snippet function.
 async def generate_keywords_api(prompt: str):
     validate_input_length(prompt)
     snippet = generate_branding_snippet(prompt)
