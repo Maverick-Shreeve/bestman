@@ -16,7 +16,7 @@ interface FormProps {  //Props are arguments passed into react components
   
     let statusColor = "text-slate-500";
     let statusText = null;
-    if (!isPromptValid) {
+    if (!isPromptValid) {   //will block off sumbit button if over 32 characters
       statusColor = "text-red-400";
       statusText = `Input must be less than ${props.characterLimit} characters.`;
     }
@@ -29,9 +29,9 @@ interface FormProps {  //Props are arguments passed into react components
           </p>
         </div>
   
-        <input
+        <input // this is for our text box
           className="p-2 w-full rounded-md focus:outline-teal-400 focus:outline text-slate-700"
-          type="text"
+          type="text"  
           placeholder="coffee"
           value={props.prompt}
           onChange={(e) => updatePromptValue(e.currentTarget.value)}

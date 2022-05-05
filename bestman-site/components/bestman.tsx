@@ -1,12 +1,13 @@
 import React from "react";
 import Form from "./form";
 import Results from "./results";
-import Image from "next/image";
+//import Image from "next/image";
+//import logo from "../public/bestmanLogo.png"
 
 
 const BestMan: React.FC = () => {
   const CHARACTER_LIMIT: number = 32;
-  const ENDPOINT: string =
+  const ENDPOINT: any =
     "https://2iuf8acbwl.execute-api.us-east-1.amazonaws.com/prod/generate_snippet_and_keywords";
   const [prompt, setPrompt] = React.useState("");  // ^^link above is from my cdk deploy to aws 
   const [snippet, setSnippet] = React.useState("");   
@@ -60,13 +61,13 @@ const BestMan: React.FC = () => {
 
   const gradientTextStyle =
     "text-white text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-blue-500 font-light w-fit mx-auto";
-
-  return (
-    <div className="h-screen flex">
+// getting the exact font i want for the wording on the pages ^^ found this snippet on Stackoverflow
+  return ( //the h-screen flex is what centers the box along with the line of code below it
+     <div className="h-screen flex">  
       <div className="max-w-md m-auto p-2">
         <div className="bg-slate-800 p-6 rounded-md text-white">
           <div className="text-center my-6">
-            {/* <Image src={logo} width={42} height={42} /> */}
+            {/* { <Image src={logo} width={145} height={80} /> } */}
             <h1 className={gradientTextStyle + " text-3xl font-light"}>
               BestMan
             </h1>
